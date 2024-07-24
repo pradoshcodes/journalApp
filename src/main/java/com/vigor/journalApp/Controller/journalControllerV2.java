@@ -1,6 +1,8 @@
 package com.vigor.journalApp.Controller;
 
 import com.vigor.journalApp.Entity.JournalEntry;
+import com.vigor.journalApp.Service.JournalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,6 +14,9 @@ import java.util.Map;
 @RequestMapping("/journal")
 public class journalControllerV2 {
 
+    @Autowired
+    private JournalService journalService;
+
 
     @GetMapping
     public List<JournalEntry> getAll(){
@@ -20,7 +25,7 @@ public class journalControllerV2 {
 
     @PostMapping
     public boolean createEntity(@RequestBody JournalEntry myEntry){
-
+    journalService.saveEntry(myEntry);
         return true;
     }
 
