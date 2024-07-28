@@ -23,8 +23,9 @@ public class journalControllerV2 {
     public ResponseEntity<?> getAll() {
         List<JournalEntry> all= journalService.getAll();
         if(all !=null && !all.isEmpty()){
-            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return  new ResponseEntity<>(HttpStatus.OK);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
