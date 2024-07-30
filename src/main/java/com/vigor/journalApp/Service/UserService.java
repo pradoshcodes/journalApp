@@ -8,29 +8,35 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.awt.print.PrinterJob;
 import java.util.List;
 import java.util.Optional;
 
 @Component
 public class UserService {
 
+    public PrinterJob findByUserName;
     @Autowired
-    private UserRepository  userRepository;
+    private UserRepository userRepository;
 
 
-    public void saveEntry(User user){
+    public void saveEntry(User user) {
         userRepository.save(user);
     }
 
     public List<User> getAll() {
-        return  userRepository.findAll();
+        return userRepository.findAll();
     }
 
-    public Optional<User> findById(ObjectId id){
-        return  userRepository.findById(id);
+    public Optional<User> findById(ObjectId id) {
+        return userRepository.findById(id);
     }
 
-    public void deleteById(ObjectId id){
+    public void deleteById(ObjectId id) {
         userRepository.deleteById(id);
     }
+
+    public User findByUserName(String userName) {
+    }
+}
 }
