@@ -1,6 +1,7 @@
 package com.vigor.journalApp.Service;
 
 import com.vigor.journalApp.Entity.JournalEntry;
+import com.vigor.journalApp.Entity.User;
 import com.vigor.journalApp.Repository.JournalRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,9 @@ public class JournalService {
     private JournalRepository journalRepository;
 
 
-    public void saveEntry(JournalEntry journalEntry){
-        journalRepository.save(journalEntry);
+    public void saveEntry(JournalEntry journalEntry, String userName, UserService userService){
+        User user=userService.findByUserName(userName);
+        JournalEntry saved=journalRepository.save(journalEntry);
     }
 
     public List<JournalEntry> getAll() {
